@@ -1,0 +1,14 @@
+{
+	"name": "goods",
+	"description": "Goods Parser",
+	"version": "0.0.1",
+	"private": true,
+	"main": "server.js",
+	"dependencies": {
+		"request": "2.x",
+		"cheerio": "0.x",
+		"iconv": "2.x",
+		"express": "3.x",
+		"mongodb": "1.x"
+	}
+}
