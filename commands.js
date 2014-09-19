@@ -2,7 +2,7 @@ var request = require('request'),
 	cheerio = require('cheerio'),
 	Buffer = require('buffer').Buffer,
 	iconv  = require('iconv').Iconv,
-	mongoDbGoods = require('./goodsDb').getGoodsDb(),
+	mongoProductsDb = require('./productsDb').getProductsDb(),
 	baseUrl = 'http://www.goodsmatrix.ru/',
 	$body,
 	options = {
@@ -13,7 +13,7 @@ var request = require('request'),
 	};
 
 exports.findAll = function(req, res) {
-	mongoDbGoods.collection('goods', function(err, collection) {
+	mongoProductsDb.collection('products', function(err, collection) {
 		collection.find().toArray(function(err, items) {
 			res.send(items);
 		});
@@ -22,7 +22,7 @@ exports.findAll = function(req, res) {
  
 exports.findById = function (req, res) {
 	barCode = req.params.id;
-	mongoDbGoods.collection('goods', function(err, collection) {
+	mongoProductsDb.collection('products', function(err, collection) {
 		collection.findOne({barCode: barCode}, function(err, doc) {
 			if(doc != null) {
        			res.send(doc);
@@ -77,7 +77,7 @@ function encode(body) {
 }
 
 function insert(goodObject) {
-	mongoDbGoods.collection('goods', function(err, collection) {
+	mongoProductsDb.collection('products', function(err, collection) {
 		collection.insert(goodObject, function(err, records) {
 			console.log("Record added as "+records[0].barCode);
     	});
