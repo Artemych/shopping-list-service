@@ -9,6 +9,6 @@
 		"cheerio": "0.x",
 		"iconv": "2.x",
 		"express": "3.x",
-		"mongodb": "1.x"
+		"mongodb": "1.x",
 	}
 }
